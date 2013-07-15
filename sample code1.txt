@@ -1,0 +1,27 @@
+$email = $_POST['email'];
+	$dbcnx = new DBUtility();	
+
+	
+	$query=$dbcnx->getData("select * from investor_data where email='" . $email . "'");
+       	
+	if(mysql_num_rows($query)>0){
+		//EMail already exists//
+		echo('EMail ID Exists');
+
+
+if(validate())
+		{
+				var str = getData();
+				$.ajax({
+					type: "POST",
+					url: "./investors_save.php",
+					data: str,
+					success: function(result){
+						alert(result);
+						window.location="investorRequest.php";
+					},
+					error: function(XMLHttpRequest, textstatus, err){
+							alert(err);
+						}
+				});
+		}	

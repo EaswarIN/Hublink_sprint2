@@ -1,6 +1,17 @@
 // JavaScript Document
 
 $(document).ready(function(){
+	$.ajaxSetup({
+		            beforeSend: function () {
+		              var height = $('body').css('height');
+						  $(".bgModel").css("height", height);
+						  $(".bgModel").show();
+		              },
+		            complete: function () {
+						$(".bgModel").hide();
+		            },
+		            success: function () {}
+        });
 	$("#app_investor").click(function(event){
 		event.preventDefault();
 		update_login_table();
@@ -9,7 +20,7 @@ $(document).ready(function(){
 		event.preventDefault();
 		var statusCode = $(this).find("option:selected").val();
 		var str= "?statuscode=" + statusCode;
-		window.location ="admin.php" + str;		
+		window.location ="admin.php" + str;
 	});
 	$(".imgapprove").click(function(event){
 		event.preventDefault();
@@ -22,16 +33,20 @@ $(document).ready(function(){
 			data: str,
 			success: function(result)
 			{
-//				alert(result);
 				if( $.trim(result) == "success")
 				{
-					window.location="admin.php";
+				alert("Approved");
+					//$("#errdiv").text(result);
+
+
+						window.location="admin.php";
+
 				}
-				else alert("Error in approval. Try again.");
-			}		
+				else alert("Error in Approval. Try Again");
+			}
 		});
 	});
-	
+
 	$(".imgreject").click(function(event){
 		event.preventDefault();
 		var id = $(this).parent().parent().attr('id');
@@ -42,13 +57,14 @@ $(document).ready(function(){
 			data: str,
 			success: function(result)
 			{
-				
+
 				if( $.trim(result) == "success")
 				{
-					window.location="admin.php";
+				alert("Rejected");
+				window.location="admin.php";
 				}
 				else alert("Error in reject. Try again.");
-			}		
+			}
 		});
 	});
 
@@ -61,10 +77,10 @@ $(document).ready(function(){
     		$(this).find("td").each(function(cellIndex) {
 				if(cellIndex==0){
 					if($(this).find("Input[type='checkbox']:checked").val()=="on")
-						rowselected = true;	
+						rowselected = true;
 				}
 				if(rowselected && cellIndex==7){
-            		email = ($(this).text());					
+            		email = ($(this).text());
 				}
     		});
 		});
@@ -79,7 +95,7 @@ $(document).ready(function(){
 								window.location="admin.php";
 							}
 							else alert("Error in approval. Try again.");
-			}		
+			}
 		});
 	}
 });

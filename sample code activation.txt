@@ -1,0 +1,21 @@
+Activation Code:
+<?php
+$chain="";
+$arra_codesASCII=array();
+for($i=ord(0);$i<=ord(9);$i++) $arra_codesASCII[]=chr($i);
+for($i=ord("a");$i<=ord("z");$i++) $arra_codesASCII[]=chr($i);
+for($i=ord("A");$i<=ord("Z");$i++) $arra_codesASCII[]=chr($i);
+for($i=0;$i!=128;$i++) $chain.=$arra_codesASCII[array_rand($arra_codesASCII)]; 
+?>
+Store the code in the database with there username obviously ;) then send them an email:
+<?php
+$headers = 'From: webmaster@companyname.com' . "\r\n";
+$headers.= "MIME-version: 1.0\n";
+$headers.= "Content-type: text/html; charset= iso-8859-1\n";
+
+$message = "Thank you to register with (company name)<br>\n (2nd line) <br>\n In order to activate your account please click here:<br>\n
+<center><a href=\"http://websiteaddress/reguser.php?verify=".$chain."&mail=".$useremail)." &web=0\">Activation</a></center> <br>\n
+Thank you for taking the time to register to the (company name) Website. <br><br>\n\n Please do not reply to this email has the mailbox isn't monitored.<br><br><br>\n\n\n<center> - The Webmaster (company name) - </center><br>\n";
+
+mail($useremail,'title', $message, $headers);
+?>

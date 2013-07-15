@@ -26,7 +26,7 @@
       <li><a href="investors.php" class="menu-investors menu-on">INVESTORS</a>
       <li><a href="our_team.php" class="menu-our_team">OUR TEAM</a>
       <li><a href="contact_us.php" class="menu-contact_us">CONTACT US</a>
-<?Php 
+<?Php
 		session_start();
   		if(isset($_SESSION["username"]))
 		{
@@ -40,10 +40,9 @@
     </ul>
   </div>
   <div class="span-24 content">
-    <div class="span-10 content" ><h1>Admin</h1></div>
-		  <?Php 
+    		  <?Php
 		  include ("Utility/DBUtility.php");
-      		echo "<div class='span-10 content' style='width:615px;text-align:right'><h1>Welcome " . (isset($_SESSION["username"])? $_SESSION["username"] : " Guest </h1></div>");
+      		echo "<h1><span class='fleft'> Admin</span><span class='fright'> Welcome"   . (isset($_SESSION["username"])? ", " . $_SESSION["firstname"] .  " " . $_SESSION["lastname"] . "!</span></h1>" :  "</span></h1> ");
 		?>
 	</div>
 
@@ -51,7 +50,12 @@
 	<div><form id="frmSearch">
 		<table>
 			<tr>
-				<td>Investor Staus</td><td>:</td><td><select id="invStatus"><option value="0" id="0">select</option><option value="PFA" id="PFA" >Pending For Approval</option><option value="APP" id="APP">Approved</option></select></td>
+				<td>Investor Status</td><td>:</td><td><select id="invStatus">
+<option value="0" id="0">select</option>
+<option value="PFA" id="PFA" >Pending For Approval</option>
+<option value="APP" id="APP">Approved</option>
+<option value="REJ" id="REJ">Rejected</option>
+</select></td>
 			</tr>
 		</table></form>
 	</div>
@@ -72,7 +76,7 @@
 			{
 				echo '<tr id=' . $row[0] . '>';
 				#echo '<td>' . '<input type="checkbox" id="' . $row[0] . '" />' . '</td>';
-				echo '<td>' . $row[1] .' '. $row[2] .' '. $row[3] . '</td>'; 
+				echo '<td>' . $row[1] .' '. $row[2] .' '. $row[3] . '</td>';
 				echo '<td>' . $row[4] .'</td>';
 				echo '<td>' . $row[5] .'</td>';
 				echo '<td>' . $row[6] .',<br/> '. $row[7] .',<br/>'. $row[8] .',<br/>'. $row[9] .',<br/>'. $row[10] .'</td>';
@@ -86,8 +90,15 @@
 					echo '<td><img src=./images/approve.png class="imgapprove"/></td>';
 					echo '<td><img src=./images/reject.png class="imgreject"/></td>';
 				}
-				echo '</tr>';
-			}
+			 	if ( $status=='APP') {
+				echo '<td><img src=./images/reject.png class="imgreject"/></td>';
+								}
+				if($status =='REJ'){
+					echo '<td><img src=./images/approve.png class="imgapprove"/></td>';
+								}
+					echo '</tr>';
+						}
+
 			echo '</table><br />';
 		}
 		else{
@@ -96,7 +107,7 @@
 		mysql_free_result($result);
 		?>
     <!--input id="app_investor" type="button" value="Approve"/-->
-   </div></div>
+
   <div class="span-24 footer">
     <ul>
       <li><a href="index.php">Home</a></li><font size="1.5">|</font>
@@ -110,4 +121,3 @@
 
 </body>
 </html>
-			

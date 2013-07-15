@@ -177,7 +177,7 @@ class PHPMailer {
    * is in a different directory than the PHP include path.
    * @var string
    */
-  public $PluginDir         = 'c:\xampp\php\PEAR\';
+  public $PluginDir         = '';
 
   /**
    * Sets the email address that a reading confirmation will be sent.
@@ -221,13 +221,13 @@ class PHPMailer {
    * Hosts will be tried in order.
    * @var string
    */
-  public $Host          = 'smtp.gmail.com';
+  public $Host          = 'localhost';
 
   /**
    * Sets the default SMTP server port.
    * @var int
    */
-  public $Port          = 465;
+  public $Port          = 25;
 
   /**
    * Sets the SMTP HELO of the message (Default is $Hostname).
@@ -251,7 +251,7 @@ class PHPMailer {
    * Sets SMTP username.
    * @var string
    */
-  public $Username      = 'pal.eash@gmail.com';
+  public $Username      = '';
 
   /**
    * Sets SMTP password.
@@ -965,7 +965,7 @@ class PHPMailer {
    * @return bool
    */
   protected function SmtpSend($header, $body) {
-    require_once $this->PluginDir.'class.smtp.php';
+    require_once $this->PluginDir . 'class.smtp.php';
     $bad_rcpt = array();
 
     if(!$this->SmtpConnect()) {

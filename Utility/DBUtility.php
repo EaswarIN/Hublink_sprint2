@@ -1,10 +1,10 @@
 <?PHP
 class DBUtility{
 private $db_host ="localhost";
-/*local settings*/
-private $db_user ="sarathy";
-private $db_pass ="sss";
-private $db_name ="582001";
+/*hublink server settings*/
+private $db_user ="hublinknetworks";
+private $db_pass ="MwxKW5S4";
+private $db_name ="wwwhublinknetworkscom";
 
 /*Production settings*/
 /*private $db_user ="582001";

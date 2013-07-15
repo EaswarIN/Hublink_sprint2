@@ -32,7 +32,7 @@ form label { color: #295c69; font-family: Arial; font-size: small; font-weight:b
       <li><a href="investors.php" class="menu-investors">INVESTORS</a>
       <li><a href="our_team.php" class="menu-our_team">OUR TEAM</a>
       <li><a href="contact_us.php" class="menu-contact_us  menu-on">CONTACT US</a>
-<?Php 
+<?Php
 		session_start();
   		if(isset($_SESSION["username"]))
 		{
@@ -46,46 +46,51 @@ form label { color: #295c69; font-family: Arial; font-size: small; font-weight:b
     </ul>
   </div>
   <div class="span-24 content">
-    <div class="span-10 content" ><h1>Contact Us</h1></div>
-		  <?Php 
-      		echo "<div class='span-10 content' style='width:615px;text-align:right'><h1>Welcome " . (isset($_SESSION["username"])? $_SESSION["username"] : " Guest </h1></div>");
+
+		  <?Php
+      		echo "<h1><span class='fleft'>Contact Us</span><span class='fright'> Welcome"   . (isset($_SESSION["username"])? ", " . $_SESSION["firstname"] .  " " . $_SESSION["lastname"] . "!</span></h1>" :  "</span></h1> ");
+
 		?>
 	</div>
 
-<div class="span-24 content">
-    <p class="large loud">Get in touch with us by mail, phone or through our fast contact form below.We will get back to you as fast as we can!</p>
-	      <div id="errdiv" style="color:#FF0000;width:500px;"></div>
+<div class="span-24">
+    <p class="">Get in touch with us by mail, phone or through our fast contact form below. We will get back to you as fast as we can!</p>
+	      <div id="errdiv"></div>
+	      <div id="successmsgdiv"></div>
     <table align="center">
       <tr>
         <td width="450px"><form id="contact_us">
+
             <label>Name:</label>
-            <br />
             <input id="first_name" style="width:160px;" type="text"/>
             <input id="last_name" style="width:165px;" type="text"/>
-            <br />
+
             <label>Email:</label>
-            <br />
+
             <input id="email" type="text" />
-            <br />
+
+            <label>Phone:</label>
+
+            <input id="contact_phone" type="text" />
+
             <label>Comments:</label>
-            <br />
-            <textarea id="comments" rows="5"></textarea>
-            <br />
-            <br />
-            <input id="submit" type="submit" value="Submit"/>
+
+            <textarea id="comments" rows="5"></textarea><br />
+            <input id="contactSubmit" type="button" value="Submit"/>
             <!--a href="#" class="submit_btn">submit</a-->
-          </form></td>
-        <td valign="top" ><span style="color: #295c69;font-family: Arial;font-size: small;font-weight: bold;">Contact Information:</span><br />
-          <span style="font-family:Arial, Helvetica, sans-serif; font-size:16px; color:#7a7a7b;">HubLink Networks</span><br>
-          <span style="line-height:1.2;font-family:Arial, Helvetica, sans-serif; font-size:14px; color:#7a7a7b">Irgendwoweg 45,<br />
-            CH-9020 Irgendwostadt<br />
+
+             </form></td>
+        <td valign="top" ><span style="color: #295c69;font-size: small;font-weight: bold;">Contact Information:</span><br />
+          <span style=" font-size:16px; color:#7a7a7b;">HubLink Networks</span><br>
+          <span style="line-height:1.2; font-size:14px; color:#7a7a7b">P&#252;ntweg 4,<br />
+            8155 Niederhasli<br />
             Switzerland<br />
-            Tel: +41 77 777 77 77<br />
-            Email: info@irgendwo.com</span>
+            Tel: +41 79 616 69 41<br />
+            Email: info@hublinknetworks.com</span>
           </br></td>
       </tr>
     </table>
-   
+
   </div>
   <div class="span-24 footer">
      <ul>

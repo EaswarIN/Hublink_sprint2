@@ -29,7 +29,7 @@ $mail->SMTPSecure = "ssl";                 // sets the prefix to the servier
 $mail->Host       = "smtp.gmail.com";      // sets GMAIL as the SMTP server
 $mail->Port       = 465;                   // set the SMTP port for the GMAIL server
 $mail->Username   = "pal.eash@gmail.com";  // GMAIL username
-$mail->Password   = "pitts12!bliss";            // GMAIL password
+$mail->Password   = "";            // GMAIL password
 
 $mail->SetFrom('test@hublink.com', 'First Last');
 

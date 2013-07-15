@@ -4,12 +4,6 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <link rel="stylesheet" href="css/blueprint/grid.css" type="text/css"/>
 <link rel="stylesheet" href="css/main.css" type="text/css"/>
-<script src="js/jquery-1.9.0.js"></script>
-<script src="js/investors.js"></script>
-<style type="text/css">
-.crf_form { border: thin solid #9A9A9A; width:500px; padding: 10px; }
-form label { color: #295c69; font-family: Arial; font-size: small; display: block; text-align: left; width: 140px; float: left; font-weight:bold; }
-</style>
 <title>Investors</title>
 </head>
 <body>
@@ -34,6 +28,7 @@ form label { color: #295c69; font-family: Arial; font-size: small; display: bloc
     </ul>
   </div>
 <div class="span-24 content">
+<h1>Thank You</h1>
        <p class="large loud">Thank you for your interest in HubLink Networks. We are processing your request. A temporary password will be sent to your email address on file.  Please check your inbox for further instructions. If you like to return to our home page, please <a href="index.php">click here</a></p>
   </div>
   <div class="span-24 footer">

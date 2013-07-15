@@ -26,7 +26,7 @@
       <li><a href="investors.php" class="menu-investors">INVESTORS</a>
       <li><a href="our_team.php" class="menu-our_team  menu-on">OUR TEAM</a>
       <li><a href="contact_us.php" class="menu-contact_us">CONTACT US</a>
-      <?Php 
+      <?Php
 		session_start();
   		if(isset($_SESSION["username"]))
 		{
@@ -40,15 +40,14 @@
     </ul>
   </div>
   <div class="span-24 content">
-    <div class="span-10 content" ><h1>Our Team</h1></div>
-		  <?Php 
-      		echo "<div class='span-10 content' style='width:615px;text-align:right'><h1>Welcome " . (isset($_SESSION["username"])? $_SESSION["username"] : " Guest </h1></div>");
+		  <?Php
+      		  		echo "<h1><span class='fleft'>Our Team</span><span class='fright'>  Welcome"   . (isset($_SESSION["username"])? ", " . $_SESSION["firstname"] .  " " . $_SESSION["lastname"] . "!</span></h1>" :  "</span></h1> ");
 		?>
 	</div>
 
 <div class="span-24 content">
-    <p class="large loud">We are backed by experienced advisors and our executive team has many years of experience in building successful companies from the start-up phase through the exit, having worked within Start-ups to Fortune 500 companies.</p>
-  </div> 
+    <p class="large loud">We are backed by experienced advisors and our executive team has many years of experience in building successful companies from the start-up phase through the exit. Our combined core competencies match that of the product we are developing and the customer market we look to service. As a registered investor you will see more details.</p>
+  </div>
   <div class="span-24 footer">
     <ul>
       <li><a href="index.php">Home</a></li><font size="1.5">|</font>

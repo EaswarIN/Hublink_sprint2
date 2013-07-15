@@ -1,70 +1,86 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<link rel="stylesheet" href="css/blueprint/grid.css" type="text/css"/>
-<link rel="stylesheet" href="css/main.css" type="text/css"/>
-<!--link rel="stylesheet" href="css/blueprint/ie.css" type="text/css" -->
-<!--link rel="stylesheet" href="css/blueprint/typography.css" type="text/css"/-->
-<script src="js/jquery-1.9.0.js"></script>
-<script src="js/investors.js"></script>
-<style type="text/css">
-form label { color: #295c69; font-family: Arial; font-size: small; font-weight:bold; }	
-</style>
-<title>Password Recovery</title>
-</head>
-<body>
-<div class="container">
-  <div class=" span-24 top_logo">
-    <table>
-      <tr>
-        <td><img src="images/banner.jpg" border="0"/></td>
-      </tr>
-    </table>
-  </div>
-  <div class="span-24  top_nav_bar">
-    <ul>
-      <li><a href="index.php" class="menu-home">HOME</a>
-      <li><a href="about_us.php" class="menu-about_us">ABOUT US</a>
-      <li><a href="products.php" class="menu-products  menu-on">PRODUCTS</a>
-      <li><a href="investors.php" class="menu-investors">INVESTORS</a>
-      <li><a href="our_team.php" class="menu-our_team">OUR TEAM</a>
-      <li><a href="contact_us.php" class="menu-contact_us">CONTACT US</a>
-      <li><a href="sign_in.php" class="menu-sign_in">SIGN IN</a>
-    </ul>
-  </div>
-  <div class="span-24 content">
+<?php
 
-    <h1>Password Recovery</h1><div>
-    <p class="large loud">If you are a registered user and need to recover your password, please enter your email Id; a temporary password will be mailed to your account after verification with our records. Thank You.</p>
-    <form id="pwd_recovery" style="margin-left: 200px">
-    	<table>
-    		<tr>
-    			<td>
-    				<label>Email:</label>&nbsp;		
-    			</td>
-    			<td>
-    				<input id="email" type="email" style="width: 160px"/>		
-    			</td>
-    		</tr>
-    		<tr>
-    			<td></td>
-    			<td><input type="submit"  value="Submit"/></td>
-    		</tr>
-    	</table>
-    </form>
-    
-   </div></div>
-  <div class="span-24 footer">
-    <ul>
-      <li><a href="index.php">Home</a></li><font size="1.5">|</font>
-      <li><a href="about_us.php">About Us</a></li><font size="1.5">|</font>
-      <li><a href="products.php">Products</a></li><font size="1.5">|</font>
-      <li><a href="investors.php">Investors</a></li><font size="1.5">|</font>
-      <li><a href="our_team.php">Our Team</a></li><font size="1.5">|</font>
-      <li><a href="contact_us.php">Contact Us</a></li> </ul>
-  </div>
-</div>
+include ("Utility/DBUtility.php");
+require 'class.phpmailer.php';
 
-</body>
-</html>
+	resetPassword();
+
+	function resetPassword(){
+		$dbcnx = new DBUtility();
+
+	   	$email = $_POST['email'];
+		$activationcode = gen_activationcode();
+
+	   	$query = "select count(1) from user_credentials ,investor_data invd where invd.id=investorid and username = '". $email . "' and invd.statuscode='APP'";
+		$result = $dbcnx->getData($query);
+
+		if($result){
+			sendmail($email,$activationcode);
+   		}
+   		else
+   		{
+   			echo('Not a Registered User');
+   		}
+	}
+
+   function get_activation()
+	{
+		$chain="";
+		$arra_codesASCII=array();
+		for($i=ord(0);$i<=ord(9);$i++) $arra_codesASCII[]=chr($i);
+		for($i=ord("a");$i<=ord("z");$i++) $arra_codesASCII[]=chr($i);
+		for($i=ord("A");$i<=ord("Z");$i++) $arra_codesASCII[]=chr($i);
+		for($i=0;$i!=128;$i++) $chain.=$arra_codesASCII[array_rand($arra_codesASCII)];
+
+		return $chain;
+	}
+
+
+   function gen_activationcode()
+   {
+   		$acode = '';
+		$chars = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+		for ($i=0; $i<8; $i++)
+		$acode .= $chars[mt_rand(0, strlen($chars)-1)];
+		return $acode;
+   }
+   function sendmail($email,$activationcode){
+
+   		$admin = "admin@hublinksnetwork.com";
+
+		//mail($admin, $subject, $message, $headers);
+		//mail($email, $subject, $message, $headers);
+
+		$mail = new PHPMailer;
+		$mail->IsSMTP();                                      // Set mailer to use SMTP
+
+		//$mail->Host = 'smtp.gmail.com';  // Specify main and backup server
+		$mail->Host = 'smtp.iway.ch';
+		$mail->SMTPAuth = true;  // Enable SMTP authentication
+
+		$mail->Username = 'admin@hublinknetworks.com';                            // SMTP username
+		$mail->Password = 'cA4dVug5';
+
+		//$mail->Username = 'mailtohublink@gmail.com';                            // SMTP username
+		//$mail->Password = 'hmmemckjemyzdjpz';                           // SMTP password for Application access
+		$mail->SMTPSecure = 'tls';                            // Enable encryption, 'ssl' also accepted
+
+		$mail->From = 'admin@hublinknetworks.com';
+		$mail->FromName = 'Hublink Admin';
+		$mail->AddAddress($email);               // Name is optional
+
+		$mail->WordWrap = 50;                                 // Set word wrap to 50 characters
+		$mail->IsHTML(true);                                  // Set email format to HTML
+
+		$mail->Subject = 'Hublink User check';
+		$mail->Body    = "Hi <br><br> Thank you for contacting us. Your password has been reset.<br> Please create a new password by clicking
+						 <a href ='http://hublinknetworks.com/register_user.php?username=" .$email."&code=".$activationcode."'>here</a>" ;
+
+		if(!$mail->Send()) {
+   			//echo 'Message could not be sent.';
+   			echo 'Mailer Error: ' . $mail->ErrorInfo;
+		}
+
+		echo 'Password Reset Successful';
+   }
+?>

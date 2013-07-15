@@ -19,13 +19,14 @@
   </div>
   <div class="span-24  top_nav_bar">
     <ul>
+
       <li><a href="index.php" class="menu-home">HOME</a>
       <li><a href="about_us.php" class="menu-about_us  menu-on">ABOUT US</a>
       <li><a href="products.php" class="menu-products">PRODUCTS</a>
       <li><a href="investors.php" class="menu-investors">INVESTORS</a>
       <li><a href="our_team.php" class="menu-our_team">OUR TEAM</a>
       <li><a href="contact_us.php" class="menu-contact_us">CONTACT US</a>
-<?PHP 
+<?PHP
 		session_start();
   		if(isset($_SESSION["username"]))
 		{
@@ -38,16 +39,17 @@
 ?>
     </ul>
   </div>
+
 <div class="span-24 content">
-    <div class="span-10 content" ><h1>About Us</h1></div>
-		  <?Php 
-      		echo "<div class='span-10 content' style='width:615px;text-align:right'><h1>Welcome " . (isset($_SESSION["username"])? $_SESSION["username"] : " Guest </h1></div>");
-		?>
-	</div>
+      <?Php
+          echo "<h1><span class='fleft'> About Us</span><span class='fright'> Welcome"   . (isset($_SESSION["username"])? ", " . $_SESSION["firstname"] .  " " . $_SESSION["lastname"] . "!</span></h1>" :  "</span></h1> ");
+    ?>
+  </div>
+
 <div class="span-24 content">
-    <p class="large loud">HubLink is a concept born out of the frustration that traditional on-line networks for professionals have become more about quantity then quality, and gravitate more and more towards becoming matchmaking sites for potential employees and employers.</p>
-    <P>We here at HubLink believe that for a professional networking platform to be effective and to generate business for its members, the platform has to be focused. We are changing how professionals can interact and do business on a networking platform.</p>
-</div>  
+    <p class="large loud">HubLink Networks is a Swiss company started by experienced and committed entrepreneurs. After having used existing solutions for a long time, frustration with the lack of generating real business, data quality and wasting too much time without seeing real results came to a boil. So we decided there has to be a better solution.</p>
+    <P>We at HubLink Networks believe that for a professional networking platform to be effective and to generate business for its members, the platform has to be industry focused, have a high level of data quality and provide tools to facilitate business deals. We are changing how professionals can interact and do business on a networking platform.</p>
+</div>
 <div class="span-24 footer">
     <ul>
       <li><a href="index.php">Home</a></li><font size="1.5">|</font>

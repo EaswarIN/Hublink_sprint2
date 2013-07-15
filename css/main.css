@@ -2,9 +2,10 @@
 /* CSS Document */
 html {
 overflow: -moz-scrollbars-vertical; 
-overflow-y: scroll;
+overflow-y: scroll;font-family: Arial;
 }
-body { margin: 0px; padding: 0px; background-color:#F7F7F7; }
+body { margin: 0px; padding: 0px; background-color:#F7F7F7; font-family: Arial;
+}
 #page { margin: 0 auto;  // width: 888px;
 }
 .top_logo { background-color:#003333; padding: 10px 0 10px; }
@@ -20,7 +21,10 @@ width:100%; }
 .main_image { padding:10px; padding-right:5px; background-color:#CCC; margin:20px; margin-left:30px; }
 h1 { font-family: 'Lato', Arial, Helvetica, sans-serif; font-weight:100; font-size:20px; }
 .content { background-color:#F7F7F7; }
-.content h1 { color: #295c69; padding:15px 10px 10px; border-bottom:1px solid #D6D6D6; margin:0 }
+.content h1 { color: #295c69; padding:15px 10px 10px; border-bottom:1px solid #D6D6D6; margin:0; 
+display: inline-block;width: 1030px;}
+.fleft{float:left;text-transform: capitalize;}
+.fright{float:right;text-transform: capitalize;}
 p { font-family:Arial, Helvetica, sans-serif; font-size:14px; line-height: 2; }
 .content p { color: #7a7a7b; }
 .content div { margin:0; padding:15px 10px }
@@ -30,7 +34,9 @@ p { font-family:Arial, Helvetica, sans-serif; font-size:14px; line-height: 2; }
 .footer ul { margin:0 auto; display: inline-block; }
 .footer li { display:inline-block; padding: 0 15px; }
 .footer a { color:#295c69; text-decoration:none; }
-.submit_btn { display:inline-block; padding-left:15px; padding-right:15px; padding-top:5px; padding-bottom:5px; background-color:#295c69; color:#FFFFFF; font-weight:bold; text-decoration:none; -webkit-border-radius:10px; }
+.submit_btn { display:inline-block; padding-left:15px; padding-right:15px; padding-top:5px; padding-bottom:5px; background-color:#295c69; color:#FFFFFF; font-weight:bold; text-decoration:none;-webkit-border-radius: 10px; 
+-moz-border-radius: 10px; 
+border-radius: 10px; }
 .top_logo table { padding:3px 13px }
 .menu-home, 
 .menu-about_us, 
@@ -53,10 +59,13 @@ a.menu-on{color:#33CCFF }
 .menu-sign_in{background-image:url(../images/sign_in.png); }
 .menu-sign_out{background-image:url(../images/sign_out.png); }
 
-#contact_us input[type=text]{height:20px}
-#contact_us input[type=text], #contact_us textarea{width:345px; -webkit-border-radius:10px; border:#aaa solid thin;padding:1px 5px}
+#contact_us label{display:block}
+#contact_us input[type=text]{height:20px;margin-bottom:10px}
+#contact_us input[type=text], #contact_us textarea{width:345px; -webkit-border-radius: 10px; 
+-moz-border-radius: 10px; 
+border-radius: 10px; border:#aaa solid thin;padding:1px 5px}
 
-#sign_in input[type=text], input[type=password]{height:20px; width:200px; -webkit-border-radius:10px; border:#aaa solid thin;padding:1px 5px}
+
 
 /*#sign_in label{
 	color: #295c69;
@@ -65,10 +74,14 @@ a.menu-on{color:#33CCFF }
 	font-weight:bold;
 	text-align:right
 }*/
-.form_investor table td input[type=text]{-webkit-border-radius:10px; border:#aaa solid thin;padding:1px 5px;height:20px}
+.form_investor table td input[type=text]{-webkit-border-radius: 10px; 
+-moz-border-radius: 10px; 
+border-radius: 10px; border:#aaa solid thin;padding:1px 5px;height:20px}
 .form_investor table td label{text-align:right}
 .form_investor table td {padding:5px 0} 
-#pwd_recovery input[type=email]{-webkit-border-radius:10px; border:#aaa solid thin;padding:1px 5px;height:20px; width:300px}
+#pwd_recovery input[type=email]{-webkit-border-radius: 10px; 
+-moz-border-radius: 10px; 
+border-radius: 10px; border:#aaa solid thin;padding:1px 5px;height:20px; width:300px}
 
 /*#inv_data td{border:#295C69 solid thin }*/
 
@@ -117,19 +130,67 @@ a.menu-on{color:#33CCFF }
 }
 .loginform{
 	align: center;
-	background-color:#006666;
+	background-color:#003333;
 	border::double;
 	width:300px;
 	color: #FFFFFF;
 	font-family: Arial;
-	font-size:small;
-	font-weight:bold;
-	text-align:right;
-	padding-top:0px;
+	font-size:small;text-align:left;
+	padding:30px 50px !important;
+	margin-bottom: 15px !important;
+	-moz-border-radius: 10px; /* Firefox */  
+  -webkit-border-radius: 10px; /* Safari, Chrome */  
+  border-radius: 10px; /* CSS3 */
 }
 .loginform a{
 	font-family: Arial;
-	font-size:12px;
-	font-weight:bold;
-	color:#FFFFFF;
+	font-size:11px;
+	color:#33CCFF;
+	text-decoration:none
+}
+.loginform a:hover{
+color:#fff;
+}
+
+#sign_in input[type=text], input[type=password]{height:20px; width:285px; background-color:#F0FFFF;
+ -moz-border-radius: 10px; /* Firefox */  
+  -webkit-border-radius: 10px; /* Safari, Chrome */  
+  border-radius: 10px; /* CSS3 */ 
+border:#aaa solid thin;padding:1px 6px}
+
+.loginform label{display:block;padding:0px 0 3px 4px}
+.loginform input{margin:0 0 15px 0}
+.loginform  #sign_in_btn,.loginform #sign_in_cancel_btn{background-color:#005E5E;cursor:pointer; 
+border:3px double #fff;color:#fff;padding:2px 6px;margin:0 15px 12px 5px;}
+
+.loginform  #sign_in_btn:hover{background-color:#007979;}
+.margin7{margin:0 50px }
+#errdiv{color:#FF0000;font-size:13px;text-align:center;width:500px;margin: auto;
+/*background-color: rgb(255, 255, 190);
+border: 2px solid rgb(255, 152, 152);*/
+}
+#successmsgdiv{color:rgb(41, 92, 105);font-size:13px;text-align:center;width:500px;margin: auto;}
+
+.floatR{float:right}
+.center{text-align:center}
+
+.accountLog ul,.companyInfo ul{font-size:13px; margin:2px -38px;list-style: none;
+}
+.accountLog ul li,.companyInfo ul li{line-height:21px;list-style: none;
+background-image: url(../images/bullet_green.png);
+background-repeat: no-repeat;
+background-position: 0 4px;	text-indent:20px
+}
+.accountLog{height: 300px; border: thin solid #295C69; margin:0 10px 15px 15px !important}
+
+.companyInfo{height: 300px; border: thin solid #295C69}
+.title{border-bottom: 1px solid #D6D6D6;margin-bottom:5px
+}
+.title h1{display:inline-block; border:0;padding: 10px 10px 5px;
+}
+.bgModel{ background: rgb(54, 25, 25);background: rgba(54, 25, 25, .35); width: 100%;position: absolute;height: 100%;z-index: 1001;top: 0;display:none}
+
+#contact_us textarea {
+width: 410px;
+height:125px;overflow: auto;
 }

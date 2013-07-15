@@ -10,6 +10,7 @@ define("SIGN-IN ERROR","There was an error in processing your request. The usern
 
 #Investor approve email message starts
 define("INV-MAIL-MSG","");
+
 #Investor approve email message ends
 
 ?>

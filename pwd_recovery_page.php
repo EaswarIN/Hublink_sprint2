@@ -6,9 +6,27 @@
 <link rel="stylesheet" href="css/main.css" type="text/css"/>
 <!--link rel="stylesheet" href="css/blueprint/ie.css" type="text/css" -->
 <!--link rel="stylesheet" href="css/blueprint/typography.css" type="text/css"/-->
-<title>Home</title>
+<script src="js/jquery-1.9.0.js"></script>
+<script src="js/common.js"></script>
+<script src="js/pwdrecovery.js"></script>
+<style type="text/css">
+form label { color: #295c69; font-family: Arial; font-size: small; font-weight:bold; }
+</style>
+<title>Password Recovery</title>
 </head>
 <body>
+<?php
+		session_start();
+		if(isset($_SESSION["role"]))
+		{
+			if($_SESSION["role"]=="admin"){
+				header("location: admin.php");
+			}
+			if($_SESSION["role"]=="investor"){
+				header("location: investor_area.php");
+			}
+		}
+?>
 <div class="container">
   <div class=" span-24 top_logo">
     <table>
@@ -19,36 +37,38 @@
   </div>
   <div class="span-24  top_nav_bar">
     <ul>
-      <li><a href="index.php" class="menu-home menu-on">HOME</a>
+      <li><a href="index.php" class="menu-home">HOME</a>
       <li><a href="about_us.php" class="menu-about_us">ABOUT US</a>
-      <li><a href="products.php" class="menu-products">PRODUCTS</a>
+      <li><a href="products.php" class="menu-products  menu-on">PRODUCTS</a>
       <li><a href="investors.php" class="menu-investors">INVESTORS</a>
       <li><a href="our_team.php" class="menu-our_team">OUR TEAM</a>
       <li><a href="contact_us.php" class="menu-contact_us">CONTACT US</a>
-      <?Php
-		session_start();
-  		if(isset($_SESSION["username"]))
-		{
-      		echo "<li><a href='sign_out.php' class='menu-sign_out'>SIGN OUT</a>";
-		}
-		else
-		{
-			echo "<li><a href='sign_in.php' class='menu-sign_in'>SIGN IN</a>";
-		}
-?>
+      <li><a href="sign_in.php" class="menu-sign_in">SIGN IN</a>
     </ul>
   </div>
-   <div class="span-24 content">
+  <div class="span-24 content">
 
-      <?Php
-        		echo "<h1><span class='fleft'>Home</span><span class='fright'>  Welcome"   . (isset($_SESSION["username"])? ", " . $_SESSION["firstname"] .  " " . $_SESSION["lastname"] . "!</span></h1>" :  "</span></h1> ");
-  		?>
-	</div>
-    <div class="span-24 content">
-<div>
-    <p class="large loud">Welcome to HubLink Networks. We are currently in stealth mode. Please feel free to look around our website to find out a bit more about who we are and what we are doing to improve the quality of professional network platforms on the web.</p>
-    <p class="large loud"> At a time when quantity has outstripped quality as a goal of	networking platforms, we have devised a solution that will address the true networking needs of professionals and provide them with a networking platform where they can conduct business. As a registered investor you will see more details.</p></div>
-  </div>
+    <h1>Password Recovery</h1><div>
+    <p class="large loud">If you are a registered user and need to recover your password, please enter your email Id; a temporary password will be mailed to your account after verification with our records. Thank You.</p>
+    <div id="errdiv"></div>
+    <form id="pwd_recovery" style="margin-left: 200px">
+    	<table>
+    		<tr>
+    			<td>
+    				<label>Email:</label>&nbsp;
+    			</td>
+    			<td>
+    				<input id="email" type="email" style="width: 160px"/>
+    			</td>
+    		</tr>
+    		<tr>
+    			<td></td>
+    			<td><input id="submit" type="submit"  value="Submit"/></td>
+    		</tr>
+    	</table>
+    </form>
+
+   </div></div>
   <div class="span-24 footer">
     <ul>
       <li><a href="index.php">Home</a></li><font size="1.5">|</font>

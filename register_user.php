@@ -5,7 +5,7 @@
 <link rel="stylesheet" href="css/blueprint/grid.css" type="text/css"/>
 <link rel="stylesheet" href="css/main.css" type="text/css"/>
 <script language="javascript" src="js/jquery-1.9.0.js"></script>
-<script language="javascript" src="js/login.js"></script>
+<script language="javascript" src="js/register_user.js"></script>
 <title>sign in</title>
 </head>
 <body bgcolor="#F7F7F7">
@@ -31,20 +31,26 @@
   <div class="span-24 content">
     <h1>Sign In</h1><div id="errdiv"></div>
     <div align="center" class="content" style="padding-top:0px;">
-      <form id="sign_in" name="sign_in">
+      <form id="register_user" name="register_user">
+      <div id="errdiv"></div>
         <div class="loginform">
-<label>Username</label>
-<input id="username" name ="username"  class="text_fields" type="text" />
-<label>Password</label>
-<input id="password" name="password" class="text_fields" type="password" />
-<input id="sign_in_btn" type="submit" value="Sign in" title="Sign in" /> <input id="sign_in_cancel_btn" type="submit" value="Cancel" title="Cancel" />
-<br />
-<a href="pwd_recovery_page.php">Forgot your password?</a>
-<a class="floatR" href="investors.php" >Not yet registered with us?</a>
+
+		<label>Username<span style="color:#CC0000; font-weight:bold width: 200px"></span>:</label>
+		<input id="username" name ="username"  class="text_fields" type="text" value="<?php echo $_GET["username"]; ?>" readonly />
+		<input id="activationcode" name ="activationcode"  type="hidden" value="<?php echo $_GET["code"]; ?>" />
+		<br>
+		<label>New Password<span style="color:#CC0000; font-weight:bold margin-top: 20px;">*</span>:</label>
+		<input id="password1" name="password1" class="text_fields" type="password" style="width: 200px">
+		<br>
+		<label>Confirm Password<span style="color:#CC0000; font-weight:bold margin-top: 20px;">*</span>:</label>
+		<input id="password2" name="password2" class="text_fields" type="password" style="width: 200px"/">
+<br>
+
+		<input id="register_btn" type="submit" value="Register" title="Register" /> <input id="register_cancel_btn" type="submit" value="Cancel" title="Cancel" />
+		<br />
 
 
 		</div>
-
       </form>
     </div>
   </div>
@@ -63,6 +69,6 @@
       <li><a href="contact_us.php">Contact Us</a></li>
     </ul>
   </div>
-</div><div class="bgModel"></div>
+</div>
 </body>
 </html>
